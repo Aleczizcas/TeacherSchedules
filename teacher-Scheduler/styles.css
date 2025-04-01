@@ -1,0 +1,130 @@
+/* General styles */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background: url('004696ce8a252df48f2f9ca667101a63.gif') no-repeat center center fixed;
+    background-size: cover; /* Ensure the background covers the full screen */
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+/* Header */
+h1 {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    color: #fff4b6; /* Light Blue */
+    font-style: oblique;
+    text-shadow: 3px 3px 6px rgba(240, 232, 167, 0.8);
+}
+
+/* Flexbox layout */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(251, 255, 20, 0.7); /* Light yellow with transparency */
+    border: 2px solid #f8f3ad; /* Light Blue border */
+    border-radius: 8px;
+    color: #000000; /* Black text for readability */
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ebe987;
+}
+
+th {
+    background-color: rgba(255, 252, 84, 0.8); /* Light Blue */
+    color: #000000;
+    font-style: italic;
+    font-variant: initial;
+    text-shadow: #000000;
+    font-weight: bold;
+}
+
+td {
+    background-color: rgba(254, 255, 184, 0.6); /* Light yellow transparent */
+}
+
+/* Section headers */
+h3 {
+    color: #f9ffa7; /* Light Green */
+    font-size: 22px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #f9ffa3;
+    padding-bottom: 5px;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: rgba(144, 238, 144, 0.7); /* Light Green */
+    color: #000;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    padding: 10px 16px;
+    margin: 6px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    transition: 0.3s ease;
+}
+
+button.present-btn {
+    background-color: rgba(208, 248, 114, 0.8); /* Light Blue */
+    color: #fffed8;
+}
+
+button.absent-btn {
+    background-color: rgba(221, 219, 80, 0.8); /* Gold */
+    color: #000;
+}
+
+button:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+/* Teacher lists */
+#present-teachers-list, #absent-teachers-list {
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(255, 255, 224, 0.7); /* Light yellow */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#present-teachers-list {
+    border-left: 4px solid #f7ffac; /* Light Green */
+}
+
+#absent-teachers-list {
+    border-left: 4px solid #FFD700; /* Gold */
+}
