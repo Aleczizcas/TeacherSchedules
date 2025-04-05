@@ -12,19 +12,33 @@ function assignReplacement(absentTeacherIndex, absentSessionIndex) {
     const absentTeacher = teachers[absentTeacherIndex];
     const sessionTime = absentTeacher.schedule[absentSessionIndex].time;
 
-    // Find a replacement teacher who is free at the same time and is not Mr. Smith
+    let replacementAssigned = false;
+
+    // Find a replacement teacher who is free at the same time
     for (let i = 0; i < teachers.length; i++) {
-        if (i !== absentTeacherIndex && teachers[i].name !== "Mr. Smith") {
+        if (i !== absentTeacherIndex) {
             const availableTeacher = teachers[i];
+
+            // Skip teachers who are absent
+            if (availableTeacher.schedule.some(session => session.absent)) {
+                continue;
+            }
 
             // Check if the teacher has no class at this time
             const isFree = !availableTeacher.schedule.some(session => session.time === sessionTime);
 
             if (isFree) {
+                // If a teacher is available, assign them as a replacement
                 absentTeacher.schedule[absentSessionIndex].replacement = availableTeacher.name;
+                replacementAssigned = true;
                 break;
             }
         }
+    }
+
+    // If no replacement found, set to "No available teacher"
+    if (!replacementAssigned) {
+        absentTeacher.schedule[absentSessionIndex].replacement = "No available teacher";
     }
 }
 
@@ -90,32 +104,12 @@ function updateAbsence(teacherIndex, sessionIndex, isAbsent) {
     teachers[teacherIndex].schedule[sessionIndex].replacement = null;
 
     if (isAbsent) {
-        assignReplacement(teacherIndex, sessionIndex);
+        assignReplacement(teacherIndex, sessionIndex); // Assign replacement when absent
     }
 
-    generateSchedule();
+    generateSchedule(); // Re-render the schedule with updated data
 }
 
-// Function to find available replacements excluding Mr. Smith
-function assignReplacement(absentTeacherIndex, absentSessionIndex) {
-    const absentTeacher = teachers[absentTeacherIndex];
-    const sessionTime = absentTeacher.schedule[absentSessionIndex].time;
-
-    // Find a replacement teacher who is free at the same time and is not Mr. Smith
-    for (let i = 0; i < teachers.length; i++) {
-        if (i !== absentTeacherIndex && teachers[i].name !== "Mr. Smith") {
-            const availableTeacher = teachers[i];
-
-            // Check if the teacher has no class at this time
-            const isFree = !availableTeacher.schedule.some(session => session.time === sessionTime);
-
-            if (isFree) {
-                absentTeacher.schedule[absentSessionIndex].replacement = availableTeacher.name;
-                break;
-            }
-        }
-    }
-}
 
 // Update the list of present teachers
 function updatePresentTeachers() {
